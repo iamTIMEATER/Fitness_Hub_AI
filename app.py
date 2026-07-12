@@ -40,13 +40,17 @@ User:
 Assistant:
 """
 
-        response = model.generate_text(
-            prompt=full_prompt,
-            params={
-                "max_new_tokens": 1000,
-                "temperature": 0.4
-            }
-        )
+        try:
+            response = model.generate_text(
+                prompt=full_prompt,
+                params={
+                    "max_new_tokens": 1000,
+                    "temperature": 0.4
+                }
+            )
 
-        st.subheader("AI Response")
-        st.write(response)
+            st.subheader("AI Response")
+            st.write(response)
+
+        except Exception as e:
+            st.error(f"Error: {e}")
